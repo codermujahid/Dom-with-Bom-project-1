@@ -65,3 +65,10 @@ localStorage.setItem(key, JSON.stringify(data));
 }
 
 
+
+/**
+ * Update our ls data 
+ */
+const updateLSData = (key, array) => {
+  localStorage.setItem(key, JSON.stringify(array))
+}

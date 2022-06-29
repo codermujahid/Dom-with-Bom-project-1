@@ -5,3 +5,21 @@
 *{
     font-family: poppins;
 }
+.singal_product{
+    text-align: center;
+}
+
+
+.singal_product img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 1px;
+
+}
+
+
+
+
+
