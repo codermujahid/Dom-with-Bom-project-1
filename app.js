@@ -47,9 +47,9 @@ const getAllProduct = () =>{
                 <td>${ item.price * item.quantity } BDT</td>
                  
                 <td>
-                    <a class="btn btn-info btn-sm product_single" data-bs-toggle="modal"  product_index="${index}" href="#shop-single_modal"><i class="fas fa-eye"></i></a>
-                    <a class="btn btn-warning btn-sm product_single"  data-bs-toggle="modal" product_index="${index}"  href="#shop_edit_modal"><i class="fas fa-edit "></i></a>
-                    <a class="btn btn-danger btn-sm product_single" href=""><i class="fas fa-trash"></i></a>
+                    <a class="btn btn-info btn-sm product_view" data-bs-toggle="modal"  product_index="${index}" href="#shop-single_modal"><i class="fas fa-eye"></i></a>
+                    <a class="btn btn-warning btn-sm product_edit"  data-bs-toggle="modal" product_index="${index}"  href="#shop_edit_modal"><i class="fas fa-edit "></i></a>
+                    <a class="btn btn-danger btn-sm product_delet" product_index="${index}" href=""><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
         `;
@@ -99,12 +99,12 @@ getAllProduct();
 
  product_list.onclick = (e) => {
 
-
     e.preventDefault();
 
-    if (e.target.classList.contains('fa-eye')) {
+    // product single view
+    if (e.target.classList.contains('product_view')) {
         // get single product data ID
-    let index = e.target.parentElement.getAttribute('product_index');
+    let index = e.target.getAttribute('product_index');
     let data = readLSData('product')
     //get data key      
      const {name, price, quantity, photo} = data[index];
@@ -116,8 +116,14 @@ getAllProduct();
      <h1>${name}</h1>
      <p>Price :${price} </p>
      `;
-    } else if (e.target.classList.contains('fa-edit')){
-        let index = e.target.parentElement.getAttribute('product_index');
+
+    }
+    
+    // product edit
+    if (e.target.classList.contains('product_edit')){
+
+        //get product index
+        let index = e.target.getAttribute('product_index');
      
         //get product value
         let data = readLSData('product');
@@ -155,6 +161,26 @@ getAllProduct();
         
         `  
     }
+
+
+    // product delet
+
+    if (e.target.classList.contains('product_delet')) {
+       
+        let index = e.target.getAttribute('product_index');
+        let data = readLSData('product')
+
+
+        data.splice(index, 1)
+        // get update
+        updateLSData('product', data)
+
+        //get reaload
+        getAllProduct();
+
+
+    }
+
 
 
     // console.log(e.target.parentElement.getAttribute('product_index'));
