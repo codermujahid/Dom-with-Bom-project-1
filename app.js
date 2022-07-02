@@ -15,10 +15,13 @@ const getAllProduct = () =>{
 
    const data = readLSData('product');
 
-   //check LSData
-   if (!data) {
+    //init list
+    let list = '';
 
-    product_list.innerHTML = `
+   //check LSData
+   if (!data || data.length == 0) {
+
+    list = `
         <tr >
              <td class="text-center" colspan="7" >No product found</td>
         </tr>
@@ -27,10 +30,10 @@ const getAllProduct = () =>{
 
    }
    // sho all data list
-   if (data) {
+   if (data && data.length) {
 
     //init list
-    let list = '';
+     
     let = final_amount = 0;
 
     //lop for data
@@ -62,9 +65,9 @@ const getAllProduct = () =>{
     `;
 
 
-    product_list.innerHTML = list;
+   
    }
-
+   product_list.innerHTML = list;
 
 }
 getAllProduct();
@@ -167,6 +170,11 @@ getAllProduct();
 
     if (e.target.classList.contains('product_delet')) {
        
+        //get user confirmetion 
+        let conf = confirm('Are you sure ?')
+
+        if (conf) {
+            //get data index
         let index = e.target.getAttribute('product_index');
         let data = readLSData('product')
 
@@ -178,6 +186,9 @@ getAllProduct();
         //get reaload
         getAllProduct();
 
+        }
+
+        
 
     }
 
