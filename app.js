@@ -1,4 +1,3 @@
- 
 
  const product_form = document.getElementById('product_form');
  const product_list = document.getElementById('product_list');
@@ -146,7 +145,7 @@ getAllProduct();
             <input name="quantity" type="text"  value="${ quantity }" class="form-control">
         </div>
         <div class="my-3">
-            <label for="">quantity</label>
+            <label for="">index</label>
             <input name="index" type="text"  value="${ index }" class="form-control">
         </div>
         
